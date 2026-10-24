@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS medibook;
+USE medibook;
+CREATE TABLE IF NOT EXISTS doctors (id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(100) NOT NULL,specialty VARCHAR(80) NOT NULL,rating DECIMAL(2,1) DEFAULT 4.5,fee DECIMAL(10,2) NOT NULL,experience INT DEFAULT 5,icon VARCHAR(20) DEFAULT '👨‍⚕️');
+CREATE TABLE IF NOT EXISTS appointments (id INT AUTO_INCREMENT PRIMARY KEY,patient_name VARCHAR(100) NOT NULL,doctor_id INT NOT NULL,appointment_date DATE NOT NULL,appointment_time TIME NOT NULL,status ENUM('Booked','Cancelled') DEFAULT 'Booked',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,FOREIGN KEY(doctor_id) REFERENCES doctors(id));
+INSERT INTO doctors (name,specialty,rating,fee,experience,icon) VALUES ('Dr. Aarav Sharma','Cardiologist',4.9,700,12,'👨‍⚕️'),('Dr. Ananya Verma','Dermatologist',4.8,600,9,'👩‍⚕️'),('Dr. Rohan Mehta','Neurologist',4.9,900,14,'👨‍⚕️'),('Dr. Priya Kapoor','Pediatrician',4.8,500,8,'👩‍⚕️'),('Dr. Vikram Singh','Orthopedic',4.7,650,11,'👨‍⚕️'),('Dr. Neha Jain','General Physician',4.9,400,7,'👩‍⚕️');
